@@ -18,5 +18,12 @@ describe('YandexApi', () => {
     expect(ymaps.meta.countryCode).toBe('RU');
   });
 
-  // TODO: add more tests.
+  it('load the ymaps instance with invalid version', async () => {
+    const options: YandexApiOptions = {
+      version: '9999.99', // invalid version
+      force: true,
+    };
+
+    await expect(YandexApi.load(options)).rejects.toThrow();
+  });
 });
