@@ -1,5 +1,5 @@
-import { YandexApi } from 'react-ymaps';
+import React from 'react';
+import { render } from 'react-dom';
+import App from './App';
 
-YandexApi.load().then(ymaps => {
-  console.log(ymaps);
-});
+render(<App />, document.getElementById('root'));
