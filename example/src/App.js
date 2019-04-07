@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { YmapsProvider } from 'react-ymaps';
+import Home from './Home';
 
 export default class App extends Component {
   onLoad = ymaps => {
@@ -9,7 +10,7 @@ export default class App extends Component {
   render() {
     return (
       <YmapsProvider onLoad={this.onLoad}>
-        ymaps instance is available
+        <Home />
       </YmapsProvider>
     );
   }
