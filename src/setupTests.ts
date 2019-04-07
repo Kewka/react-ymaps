@@ -1,3 +1,5 @@
+import * as Adapter from 'enzyme-adapter-react-16';
+import { configure } from 'enzyme';
 import { JSDOM, VirtualConsole } from 'jsdom';
 
 const virtualConsole = new VirtualConsole();
@@ -77,3 +79,5 @@ window.HTMLCanvasElement.prototype.toDataURL = function() {
 };
 
 copyProps(window, global);
+
+configure({ adapter: new Adapter() });

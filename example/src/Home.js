@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withYmaps } from 'react-ymaps';
+import ExampleMap from './ExampleMap';
 
 class Home extends Component {
   componentDidMount() {
@@ -8,7 +9,7 @@ class Home extends Component {
   }
 
   render() {
-    return <div />;
+    return <ExampleMap />;
   }
 }
 
