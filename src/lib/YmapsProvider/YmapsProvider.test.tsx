@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create, ReactTestInstance } from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import YmapsProvider, { YmapsProviderProps } from './YmapsProvider';
 
 describe('YmapsProvider', () => {
@@ -12,11 +12,10 @@ describe('YmapsProvider', () => {
       children: 'ymaps instance is available',
     };
 
-    const component = create(<YmapsProvider {...props} />);
-    const instance = component.getInstance() as ReactTestInstance;
+    const component = shallow(<YmapsProvider {...props} />);
+    const instance = component.instance();
     await instance.componentDidMount();
-    const root = component.root;
-    expect(root.children).toContain(props.children);
+    expect(component.contains(props.children)).toBeTruthy();
   });
 
   it('call onLoad callback', async () => {
@@ -24,8 +23,8 @@ describe('YmapsProvider', () => {
       onLoad: jest.fn(),
     };
 
-    const component = create(<YmapsProvider {...props} />);
-    const instance = component.getInstance() as ReactTestInstance;
+    const component = shallow(<YmapsProvider {...props} />);
+    const instance = component.instance();
     await instance.componentDidMount();
     expect(props.onLoad).toBeCalled();
   });
@@ -40,11 +39,10 @@ describe('YmapsProvider', () => {
       onError: jest.fn(),
     };
 
-    const component = create(<YmapsProvider {...props} />);
-    const instance = component.getInstance() as ReactTestInstance;
-    const root = component.root;
+    const component = shallow(<YmapsProvider {...props} />);
+    const instance = component.instance();
     await instance.componentDidMount();
     expect(props.onError).toBeCalled();
-    expect(root.children).toHaveLength(0);
+    expect(component.isEmptyRender()).toBeTruthy();
   });
 });
