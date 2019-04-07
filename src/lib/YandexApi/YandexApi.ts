@@ -72,8 +72,10 @@ export default class YandexApi {
    * Loads the ymaps instance.
    * @param {YandexApiOptions} options The api options.
    */
-  public static load(options: YandexApiOptions = {}): Promise<Ymaps> {
-    if (!options.force && this.loadingPromise) {
+  public static load({ force, ...options }: YandexApiOptions = {}): Promise<
+    Ymaps
+  > {
+    if (!force && this.loadingPromise) {
       return this.loadingPromise;
     }
 
@@ -103,7 +105,7 @@ export default class YandexApi {
       fetchScript(url).catch(reject);
     });
 
-    if (!options.force) {
+    if (!force) {
       this.loadingPromise = newPromise;
     }
 
