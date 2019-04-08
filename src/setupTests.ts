@@ -1,10 +1,12 @@
+/* tslint:disable */
+
 import * as Adapter from 'enzyme-adapter-react-16';
 import { configure } from 'enzyme';
 import { JSDOM, VirtualConsole } from 'jsdom';
 
 const virtualConsole = new VirtualConsole();
 
-virtualConsole.on('jsdomError', (error) => {
+virtualConsole.on('jsdomError', error => {
   console.error('JSDOM error: ' + error.message);
 });
 
@@ -13,7 +15,7 @@ const jsdom = new JSDOM('<!doctype html><html><body></body></html>', {
   resources: 'usable',
   url: 'https://react.ymaps',
   referrer: 'https://react.ymaps',
-  virtualConsole,
+  virtualConsole
 });
 
 const { window } = jsdom;
@@ -21,7 +23,7 @@ const { window } = jsdom;
 function copyProps(src, target) {
   Object.defineProperties(target, {
     ...Object.getOwnPropertyDescriptors(src),
-    ...Object.getOwnPropertyDescriptors(target),
+    ...Object.getOwnPropertyDescriptors(target)
   });
 }
 
@@ -43,7 +45,7 @@ window.HTMLCanvasElement.prototype.getContext = function() {
     clearRect() {},
     getImageData(x, y, w, h) {
       return {
-        data: new Array(w * h * 4),
+        data: new Array(w * h * 4)
       };
     },
     putImageData() {},
@@ -70,7 +72,7 @@ window.HTMLCanvasElement.prototype.getContext = function() {
     },
     transform() {},
     rect() {},
-    clip() {},
+    clip() {}
   };
 };
 

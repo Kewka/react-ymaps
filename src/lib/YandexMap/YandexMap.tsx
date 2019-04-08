@@ -35,6 +35,7 @@ class YandexMap extends React.Component<
       height: 400,
     },
     defaultState: {
+      // Moscow
       center: [55.76, 37.64],
       zoom: 10,
     },
@@ -55,6 +56,8 @@ class YandexMap extends React.Component<
       defaultOptions,
     );
     onMapAvailable && onMapAvailable(mapInstance);
+
+    this.setState({ mapInstance });
   }
 
   public render() {

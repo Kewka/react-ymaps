@@ -25,7 +25,7 @@ describe('YandexMap', () => {
   });
 
   it('pass defaultState', (done) => {
-    expect.assertions(2);
+    expect.assertions(3);
 
     const defaultState = {
       // Yekaterinburg
@@ -37,6 +37,10 @@ describe('YandexMap', () => {
       onMapAvailable: (map) => {
         expect(map).toBeTruthy();
         expect(map.getZoom()).toBe(defaultState.zoom);
+        const formatFn = (coord: number) => coord.toFixed();
+        const expectedCenter = defaultState.center.map(formatFn);
+        const mapCenter = map.getCenter().map(formatFn);
+        expect(mapCenter).toEqual(expectedCenter);
         done();
       },
       defaultState,
