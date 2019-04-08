@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from 'react-test-renderer';
+import { mount } from 'enzyme';
 import withYmaps from './withYmaps';
 import YmapsProvider, { YmapsProviderProps } from './YmapsProvider';
 
@@ -21,6 +21,6 @@ describe('withYmaps', () => {
       return null;
     });
 
-    create(InsideProvider(<Component />));
+    mount(InsideProvider(<Component />));
   });
 });

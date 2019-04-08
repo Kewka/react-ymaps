@@ -1,2 +1,3 @@
-export { YandexApi } from './lib/YandexApi';
-export { YmapsProvider, withYmaps } from './lib/YmapsProvider';
+export * from './lib/YandexApi';
+export * from './lib/YmapsProvider';
+export * from './lib/YandexMap';
