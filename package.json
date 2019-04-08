@@ -1,6 +1,6 @@
 {
   "name": "react-ymaps",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "React.js &amp; Yandex maps",
   "author": "Kewka",
   "license": "MIT",
@@ -13,8 +13,8 @@
     "npm": ">=5"
   },
   "scripts": {
-    "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
-    "test:watch": "react-scripts-ts test --env=jsdom",
+    "test": "cross-env CI=1 react-scripts-ts test",
+    "test:watch": "react-scripts-ts test",
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "npm run build",
@@ -24,7 +24,8 @@
     "lint-fix": "tslint -p . --fix"
   },
   "dependencies": {
-    "@types/yandex-maps": "^2.1.5"
+    "@types/yandex-maps": "^2.1.5",
+    "utility-types": "^3.5.0"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
@@ -33,16 +34,22 @@
   },
   "devDependencies": {
     "@svgr/rollup": "^2.4.1",
+    "@types/enzyme": "^3.9.1",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^23.1.5",
+    "@types/jsdom": "^12.2.3",
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "cross-env": "^5.1.4",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
     "gh-pages": "^1.2.0",
+    "jsdom": "^14.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts-ts": "^4.0.8",
+    "react-scripts-ts": "^2.16.0",
     "rollup": "^0.62.0",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^9.1.3",
