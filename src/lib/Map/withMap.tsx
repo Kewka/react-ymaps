@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Subtract } from 'utility-types';
-import YandexMapContext from './YandexMapContext';
+import MapContext from './MapContext';
 
 export interface WithMap {
-  mapInstance: ymaps.Map;
+  map: ymaps.Map;
 }
 
 const withMap = <P extends WithMap>(Component: React.ComponentType<P>) => {
@@ -12,21 +12,21 @@ const withMap = <P extends WithMap>(Component: React.ComponentType<P>) => {
   > {
     public render() {
       return (
-        <YandexMapContext.Consumer>
-          {(mapInstance) => {
-            if (!mapInstance) {
+        <MapContext.Consumer>
+          {(map) => {
+            if (!map) {
               console.error(
-                'Could not find map instance in the YandexMapContext.',
+                'Could not find map instance in the MapContext.',
               );
             }
 
             return (
-              mapInstance && (
-                <Component mapInstance={mapInstance} {...this.props as P} />
+              map && (
+                <Component map={map} {...this.props as P} />
               )
             );
           }}
-        </YandexMapContext.Consumer>
+        </MapContext.Consumer>
       );
     }
   };
