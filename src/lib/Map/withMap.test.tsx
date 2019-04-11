@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import withMap from './withMap';
 import YmapsProvider from '../YmapsProvider/YmapsProvider';
-import YandexMap from './YandexMap';
+import Map from './Map';
 
 describe('withMap', () => {
   it('to be truthy', () => {
@@ -12,16 +12,16 @@ describe('withMap', () => {
   it('render inside provider', (done) => {
     expect.assertions(1);
     const Component = withMap((props) => {
-      expect(props.mapInstance).toBeTruthy();
+      expect(props.map).toBeTruthy();
       done();
       return null;
     });
 
     mount(
       <YmapsProvider>
-        <YandexMap>
+        <Map>
           <Component />
-        </YandexMap>
+        </Map>
       </YmapsProvider>,
     );
   });

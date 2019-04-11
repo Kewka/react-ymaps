@@ -1,8 +1,8 @@
 import * as React from 'react';
 import withYmaps, { WithYmaps } from '../YmapsProvider/withYmaps';
-import YandexMapContext from './YandexMapContext';
+import MapContext from './MapContext';
 
-export interface YandexMapProps {
+export interface MapProps {
   /**
    * Map container styles.
    */
@@ -18,18 +18,15 @@ export interface YandexMapProps {
   /**
    * Callback, which will be called after creating the map.
    */
-  onMapAvailable?: (mapInstance: ymaps.Map) => any;
+  instanceRef?: (map: ymaps.Map) => any;
 }
 
-export interface YandexMapState {
-  mapInstance: ymaps.Map | null;
+export interface MapState {
+  map: ymaps.Map | null;
 }
 
-class YandexMap extends React.Component<
-  YandexMapProps & WithYmaps,
-  YandexMapState
-> {
-  public static defaultProps: YandexMapProps = {
+class Map extends React.Component<MapProps & WithYmaps, MapState> {
+  public static defaultProps: MapProps = {
     containerStyle: {
       width: 600,
       height: 400,
@@ -42,35 +39,34 @@ class YandexMap extends React.Component<
     defaultOptions: {},
   };
 
-  public state: YandexMapState = {
-    mapInstance: null,
+  public state: MapState = {
+    map: null,
   };
 
   public mapContainer = React.createRef<HTMLDivElement>();
 
   public componentDidMount() {
-    const { ymaps, defaultState, defaultOptions, onMapAvailable } = this.props;
-    const mapInstance = new ymaps.Map(
+    const { ymaps, defaultState, defaultOptions, instanceRef } = this.props;
+    const map = new ymaps.Map(
       this.mapContainer.current as HTMLElement,
       defaultState as ymaps.IMapState,
       defaultOptions,
     );
-    onMapAvailable && onMapAvailable(mapInstance);
-
-    this.setState({ mapInstance });
+    this.setState({ map });
+    instanceRef && instanceRef(map);
   }
 
   public render() {
     const { containerStyle, children } = this.props;
-    const { mapInstance } = this.state;
+    const { map } = this.state;
     return (
       <div style={containerStyle} ref={this.mapContainer}>
-        {mapInstance && (
-          <YandexMapContext.Provider value={mapInstance} children={children} />
+        {map && (
+          <MapContext.Provider value={map} children={children} />
         )}
       </div>
     );
   }
 }
 
-export default withYmaps(YandexMap);
+export default withYmaps(Map);
