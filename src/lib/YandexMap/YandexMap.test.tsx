@@ -11,7 +11,7 @@ describe('YandexMap', () => {
   it('render', (done) => {
     expect.assertions(1);
     const mapProps: YandexMapProps = {
-      onMapAvailable: (map) => {
+      instanceRef: (map) => {
         expect(map).toBeTruthy();
         done();
       },
@@ -34,7 +34,7 @@ describe('YandexMap', () => {
     };
 
     const mapProps: YandexMapProps = {
-      onMapAvailable: (map) => {
+      instanceRef: (map) => {
         expect(map).toBeTruthy();
         expect(map.getZoom()).toBe(defaultState.zoom);
         const formatFn = (coord: number) => coord.toFixed();

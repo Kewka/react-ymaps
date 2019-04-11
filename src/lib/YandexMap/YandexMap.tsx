@@ -18,7 +18,7 @@ export interface YandexMapProps {
   /**
    * Callback, which will be called after creating the map.
    */
-  onMapAvailable?: (mapInstance: ymaps.Map) => any;
+  instanceRef?: (mapInstance: ymaps.Map) => any;
 }
 
 export interface YandexMapState {
@@ -49,15 +49,14 @@ class YandexMap extends React.Component<
   public mapContainer = React.createRef<HTMLDivElement>();
 
   public componentDidMount() {
-    const { ymaps, defaultState, defaultOptions, onMapAvailable } = this.props;
+    const { ymaps, defaultState, defaultOptions, instanceRef } = this.props;
     const mapInstance = new ymaps.Map(
       this.mapContainer.current as HTMLElement,
       defaultState as ymaps.IMapState,
       defaultOptions,
     );
-    onMapAvailable && onMapAvailable(mapInstance);
-
     this.setState({ mapInstance });
+    instanceRef && instanceRef(mapInstance);
   }
 
   public render() {
