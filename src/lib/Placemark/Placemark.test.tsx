@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import Placemark, { PlacemarkProps } from './Placemark';
 import { YmapsProvider } from '../YmapsProvider';
-import { YandexMap } from '../YandexMap';
+import { Map } from '../Map';
 
 describe('Placemark', () => {
   it('to be truthy', () => {
@@ -23,9 +23,9 @@ describe('Placemark', () => {
 
     mount(
       <YmapsProvider>
-        <YandexMap>
+        <Map>
           <Placemark {...props} />
-        </YandexMap>
+        </Map>
       </YmapsProvider>,
     );
   });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import withMap, { WithMap } from '../YandexMap/withMap';
+import withMap, { WithMap } from '../Map/withMap';
 import { withYmaps } from '../YmapsProvider';
 import { WithYmaps } from '../YmapsProvider/withYmaps';
 
@@ -19,7 +19,7 @@ export interface PlacemarkProps {
   /**
    * Callback, which will be called after creating the placemark.
    */
-  instanceRef?: (placemarkInstance: ymaps.Placemark) => any;
+  instanceRef?: (placemark: ymaps.Placemark) => any;
 }
 
 class Placemark extends React.Component<
@@ -35,7 +35,7 @@ class Placemark extends React.Component<
       options,
       instanceRef,
       ymaps,
-      mapInstance,
+      map,
     } = this.props;
 
     this.instance = new ymaps.Placemark(
@@ -43,7 +43,7 @@ class Placemark extends React.Component<
       properties as object | ymaps.IDataManager,
       options,
     );
-    mapInstance.geoObjects.add(this.instance);
+    map.geoObjects.add(this.instance);
     instanceRef && instanceRef(this.instance);
   }
 

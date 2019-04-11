@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import YmapsProvider from '../YmapsProvider/YmapsProvider';
-import YandexMap, { YandexMapProps } from './YandexMap';
+import Map, { MapProps } from './Map';
 
-describe('YandexMap', () => {
+describe('Map', () => {
   it('to be truthy', () => {
-    expect(YandexMap).toBeTruthy();
+    expect(Map).toBeTruthy();
   });
 
   it('render', (done) => {
     expect.assertions(1);
-    const mapProps: YandexMapProps = {
+    const mapProps: MapProps = {
       instanceRef: (map) => {
         expect(map).toBeTruthy();
         done();
@@ -19,7 +19,7 @@ describe('YandexMap', () => {
 
     mount(
       <YmapsProvider>
-        <YandexMap {...mapProps} />
+        <Map {...mapProps} />
       </YmapsProvider>,
     );
   });
@@ -33,7 +33,7 @@ describe('YandexMap', () => {
       zoom: 5,
     };
 
-    const mapProps: YandexMapProps = {
+    const mapProps: MapProps = {
       instanceRef: (map) => {
         expect(map).toBeTruthy();
         expect(map.getZoom()).toBe(defaultState.zoom);
@@ -48,7 +48,7 @@ describe('YandexMap', () => {
 
     mount(
       <YmapsProvider>
-        <YandexMap {...mapProps} />
+        <Map {...mapProps} />
       </YmapsProvider>,
     );
   });
