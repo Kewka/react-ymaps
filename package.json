@@ -21,7 +21,7 @@
     "predeploy": "cd example && npm install && npm run build",
     "deploy": "gh-pages -d example/build",
     "lint": "tslint -p .",
-    "lint-fix": "tslint -p . --fix"
+    "lint:fix": "tslint -p . --fix"
   },
   "dependencies": {
     "@types/yandex-maps": "^2.1.5",

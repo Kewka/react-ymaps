@@ -3,7 +3,7 @@ import withMap, { WithMap } from '../Map/withMap';
 import { withYmaps } from '../YmapsProvider';
 import { WithYmaps } from '../YmapsProvider/withYmaps';
 
-export interface PlacemarkProps {
+type OwnProps = {
   /**
    * Coordinates of the placemark.
    */
@@ -20,12 +20,13 @@ export interface PlacemarkProps {
    * Callback, which will be called after creating the placemark.
    */
   instanceRef?: (placemark: ymaps.Placemark) => any;
-}
+};
 
-class Placemark extends React.Component<
-  PlacemarkProps & WithMap & WithYmaps,
-  any
-> {
+type Props = OwnProps & WithMap & WithYmaps;
+
+type State = {};
+
+class Placemark extends React.Component<Props, State> {
   public instance: ymaps.Placemark | null = null;
 
   public componentDidMount() {
@@ -43,8 +44,9 @@ class Placemark extends React.Component<
       properties as object | ymaps.IDataManager,
       options,
     );
-    map.geoObjects.add(this.instance);
-    instanceRef && instanceRef(this.instance);
+
+    map.geoObjects.add(this.instance!);
+    instanceRef && instanceRef(this.instance!);
   }
 
   public render() {

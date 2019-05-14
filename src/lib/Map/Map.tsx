@@ -2,7 +2,7 @@ import * as React from 'react';
 import withYmaps, { WithYmaps } from '../YmapsProvider/withYmaps';
 import MapContext from './MapContext';
 
-export interface MapProps {
+type OwnProps = {
   /**
    * Map container styles.
    */
@@ -19,14 +19,16 @@ export interface MapProps {
    * Callback, which will be called after creating the map.
    */
   instanceRef?: (map: ymaps.Map) => any;
-}
+};
 
-export interface MapState {
+type Props = OwnProps & WithYmaps;
+
+type State = {
   map: ymaps.Map | null;
-}
+};
 
-class Map extends React.Component<MapProps & WithYmaps, MapState> {
-  public static defaultProps: MapProps = {
+class Map extends React.Component<Props, State> {
+  public static defaultProps: OwnProps = {
     containerStyle: {
       width: 600,
       height: 400,
@@ -39,7 +41,7 @@ class Map extends React.Component<MapProps & WithYmaps, MapState> {
     defaultOptions: {},
   };
 
-  public state: MapState = {
+  public state: State = {
     map: null,
   };
 
@@ -62,7 +64,7 @@ class Map extends React.Component<MapProps & WithYmaps, MapState> {
     return (
       <div style={containerStyle} ref={this.mapContainer}>
         {map && (
-          <MapContext.Provider value={map} children={children} />
+          <MapContext.Provider value={map}>{children}</MapContext.Provider>
         )}
       </div>
     );

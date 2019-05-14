@@ -1,4 +1,5 @@
-import YandexApi, { YandexApiOptions } from './YandexApi';
+import YandexApi from './YandexApi';
+import { YandexApiOptions } from './types';
 
 describe('YandexApi', () => {
   it('to be truthy', () => {
