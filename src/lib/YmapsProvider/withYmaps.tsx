@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Subtract } from 'utility-types';
 import YmapsContext from './YmapsContext';
-import Ymaps from '../../typings/Ymaps';
+import Ymaps from '../../types/Ymaps';
 
-export interface WithYmaps {
+export type WithYmaps = {
   ymaps: Ymaps;
-}
+};
 
 const withYmaps = <P extends WithYmaps>(Component: React.ComponentType<P>) => {
   return class WithYmapsComponent extends React.Component<

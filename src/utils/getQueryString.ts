@@ -1,6 +1,6 @@
 /**
  * Stringify an object with params into a query string.
- * @param {Object} params - The parameters.
+ * @param params The parameters.
  */
 export default function getQueryString(
   params: { [key in string | number]: any },

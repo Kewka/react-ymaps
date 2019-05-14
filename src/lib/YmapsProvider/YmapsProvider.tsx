@@ -1,9 +1,10 @@
 import * as React from 'react';
-import YandexApi, { YandexApiOptions } from '../YandexApi/YandexApi';
-import Ymaps from '../../typings/Ymaps';
+import YandexApi from '../YandexApi/YandexApi';
+import { YandexApiOptions } from '../YandexApi/types';
+import Ymaps from '../../types/Ymaps';
 import YmapsContext from './YmapsContext';
 
-export interface YmapsProviderProps {
+type OwnProps = {
   /**
    * API options.
    */
@@ -24,23 +25,22 @@ export interface YmapsProviderProps {
    * Callback that will call when an API fails to load.
    */
   onError?: (error: Event) => any;
-}
+};
 
-export interface YmapsProviderState {
+type Props = OwnProps;
+
+type State = {
   bootstrapped: boolean;
   ymaps: Ymaps | null;
-}
+};
 
-export default class YmapsProvider extends React.Component<
-  YmapsProviderProps,
-  YmapsProviderState
-> {
-  public static defaultProps: YmapsProviderProps = {
+export default class YmapsProvider extends React.Component<Props, State> {
+  public static defaultProps: Props = {
     options: {},
     fallback: null,
   };
 
-  public state: YmapsProviderState = {
+  public state: State = {
     bootstrapped: false,
     ymaps: null,
   };
@@ -71,6 +71,10 @@ export default class YmapsProvider extends React.Component<
       return fallback;
     }
 
-    return ymaps && <YmapsContext.Provider value={ymaps} children={children} />;
+    return (
+      ymaps && (
+        <YmapsContext.Provider value={ymaps}>{children}</YmapsContext.Provider>
+      )
+    );
   }
 }

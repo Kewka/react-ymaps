@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import YmapsProvider from '../YmapsProvider/YmapsProvider';
-import Map, { MapProps } from './Map';
+import Map from './Map';
 
 describe('Map', () => {
   it('to be truthy', () => {
@@ -10,7 +10,7 @@ describe('Map', () => {
 
   it('render', (done) => {
     expect.assertions(1);
-    const mapProps: MapProps = {
+    const mapProps: React.ComponentProps<typeof Map> = {
       instanceRef: (map) => {
         expect(map).toBeTruthy();
         done();
@@ -33,7 +33,7 @@ describe('Map', () => {
       zoom: 5,
     };
 
-    const mapProps: MapProps = {
+    const mapProps: React.ComponentProps<typeof Map> = {
       instanceRef: (map) => {
         expect(map).toBeTruthy();
         expect(map.getZoom()).toBe(defaultState.zoom);

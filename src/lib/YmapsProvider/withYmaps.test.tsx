@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import withYmaps from './withYmaps';
-import YmapsProvider, { YmapsProviderProps } from './YmapsProvider';
-
-const InsideProvider = (
-  component: React.ReactNode,
-  providerProps: YmapsProviderProps = {},
-) => <YmapsProvider {...providerProps} children={component} />;
+import YmapsProvider from './YmapsProvider';
 
 describe('withYmaps', () => {
   it('to be truthy', () => {
@@ -21,6 +16,10 @@ describe('withYmaps', () => {
       return null;
     });
 
-    mount(InsideProvider(<Component />));
+    mount(
+      <YmapsProvider>
+        <Component />
+      </YmapsProvider>,
+    );
   });
 });
