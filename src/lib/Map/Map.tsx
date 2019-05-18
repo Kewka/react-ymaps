@@ -4,9 +4,13 @@ import MapContext from './MapContext';
 
 type OwnProps = {
   /**
-   * Map container styles.
+   * Map style.
    */
-  containerStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
+  /**
+   * Map className.
+   */
+  className?: string;
   /**
    * Map parameters.
    */
@@ -16,7 +20,7 @@ type OwnProps = {
    */
   defaultOptions?: ymaps.IMapOptions;
   /**
-   * Callback, which will be called after creating the map.
+   * The function for provide access to the Map instance.
    */
   instanceRef?: (map: ymaps.Map) => any;
 };
@@ -29,10 +33,6 @@ type State = {
 
 class Map extends React.Component<Props, State> {
   public static defaultProps: OwnProps = {
-    containerStyle: {
-      width: 600,
-      height: 400,
-    },
     defaultState: {
       // Moscow
       center: [55.76, 37.64],
@@ -58,11 +58,16 @@ class Map extends React.Component<Props, State> {
     instanceRef && instanceRef(map);
   }
 
+  public componentWillUnmount() {
+    const { map } = this.state;
+    map && map.destroy();
+  }
+
   public render() {
-    const { containerStyle, children } = this.props;
+    const { className, style, children } = this.props;
     const { map } = this.state;
     return (
-      <div style={containerStyle} ref={this.mapContainer}>
+      <div className={className} style={style} ref={this.mapContainer}>
         {map && (
           <MapContext.Provider value={map}>{children}</MapContext.Provider>
         )}

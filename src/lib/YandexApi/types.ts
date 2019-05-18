@@ -7,7 +7,9 @@ export type YandexApiLanguage =
   | 'tr_TR';
 
 export type YandexApiCoordorder = 'latlong' | 'longlat';
+
 export type YandexApiMode = 'debug' | 'release';
+
 export type YandexApiOptions = {
   /**
    * Version.

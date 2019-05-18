@@ -16,7 +16,7 @@ describe('Placemark', () => {
       geometry: [55, 55],
       instanceRef: (placemark) => {
         expect(props.geometry).toBe(
-          (placemark.geometry as any).getCoordinates(),
+          (placemark.geometry as ymaps.IPointGeometry).getCoordinates(),
         );
         expect(placemark).toBeTruthy();
         done();

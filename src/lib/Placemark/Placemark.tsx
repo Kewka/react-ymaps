@@ -1,9 +1,6 @@
-import * as React from 'react';
-import withMap, { WithMap } from '../Map/withMap';
-import { withYmaps } from '../YmapsProvider';
-import { WithYmaps } from '../YmapsProvider/withYmaps';
+import { BaseGeoObject } from '../BaseGeoObject';
 
-type OwnProps = {
+type Props = {
   /**
    * Coordinates of the placemark.
    */
@@ -17,41 +14,15 @@ type OwnProps = {
    */
   options?: ymaps.IPlacemarkOptions;
   /**
-   * Callback, which will be called after creating the placemark.
+   * The function for provide access to the Placemark instance.
    */
   instanceRef?: (placemark: ymaps.Placemark) => any;
 };
 
-type Props = OwnProps & WithMap & WithYmaps;
+const Placemark = BaseGeoObject<Props>(
+  (ymaps, { geometry, properties, options }) =>
+    new ymaps.Placemark(geometry, properties!, options),
+  'Placemark',
+);
 
-type State = {};
-
-class Placemark extends React.Component<Props, State> {
-  public instance: ymaps.Placemark | null = null;
-
-  public componentDidMount() {
-    const {
-      geometry,
-      properties,
-      options,
-      instanceRef,
-      ymaps,
-      map,
-    } = this.props;
-
-    this.instance = new ymaps.Placemark(
-      geometry,
-      properties as object | ymaps.IDataManager,
-      options,
-    );
-
-    map.geoObjects.add(this.instance!);
-    instanceRef && instanceRef(this.instance!);
-  }
-
-  public render() {
-    return null;
-  }
-}
-
-export default withYmaps(withMap(Placemark));
+export default Placemark;
