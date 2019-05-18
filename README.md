@@ -10,22 +10,6 @@
 npm install --save react-ymaps
 ```
 
-## Usage
-
-```tsx
-import * as React from 'react'
-
-import MyComponent from 'react-ymaps'
-
-class Example extends React.Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
-}
-```
-
 ## License
 
 MIT © [Kewka](https://github.com/Kewka)
