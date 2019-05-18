@@ -24,8 +24,7 @@
     "lint:fix": "tslint -p . --fix"
   },
   "dependencies": {
-    "@types/yandex-maps": "^2.1.5",
-    "utility-types": "^3.5.0"
+    "@types/yandex-maps": "^2.1.5"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",

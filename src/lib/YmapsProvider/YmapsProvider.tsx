@@ -4,7 +4,7 @@ import { YandexApiOptions } from '../YandexApi/types';
 import Ymaps from '../../types/Ymaps';
 import YmapsContext from './YmapsContext';
 
-type OwnProps = {
+type Props = {
   /**
    * API options.
    */
@@ -26,8 +26,6 @@ type OwnProps = {
    */
   onError?: (error: Event) => any;
 };
-
-type Props = OwnProps;
 
 type State = {
   bootstrapped: boolean;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { YmapsProvider } from 'react-ymaps';
-import Home from './Home';
+import Home from './components/Home/Home';
 
 const onLoad = ymaps => console.log('[App] Ymaps onLoad:', ymaps);
 

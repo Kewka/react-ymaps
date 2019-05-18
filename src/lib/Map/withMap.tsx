@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Subtract } from 'utility-types';
 import MapContext from './MapContext';
+import { Without } from '../../types/utility';
 
 export type WithMap = {
   map: ymaps.Map;
@@ -8,7 +8,7 @@ export type WithMap = {
 
 const withMap = <P extends WithMap>(Component: React.ComponentType<P>) => {
   return class WithYmapsComponent extends React.Component<
-    Subtract<P, WithMap>
+    Without<P, keyof WithMap>
   > {
     public render() {
       return (

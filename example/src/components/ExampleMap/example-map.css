@@ -1,0 +1,32 @@
+.example-map {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.example-map__container {
+  flex: 1;
+}
+
+.example-map__actions {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.example-map__action {
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  margin-right: 8px;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.example-map__action:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
