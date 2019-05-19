@@ -36,10 +36,10 @@ describe('Map', () => {
     const mapProps: React.ComponentProps<typeof Map> = {
       instanceRef: (map) => {
         expect(map).toBeTruthy();
-        expect(map.getZoom()).toBe(defaultState.zoom);
+        expect(map!.getZoom()).toBe(defaultState.zoom);
         const formatFn = (coord: number) => coord.toFixed();
         const expectedCenter = defaultState.center.map(formatFn);
-        const mapCenter = map.getCenter().map(formatFn);
+        const mapCenter = map!.getCenter().map(formatFn);
         expect(mapCenter).toEqual(expectedCenter);
         done();
       },

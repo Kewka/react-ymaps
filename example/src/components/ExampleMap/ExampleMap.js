@@ -57,7 +57,11 @@ class ExampleMap extends React.Component {
           </button>
         </div>
         {hasMap && (
-          <Map className="example-map__container" defaultState={defaultState}>
+          <Map
+            onDestroy={() => alert('Map onDestroy')}
+            className="example-map__container"
+            defaultState={defaultState}
+          >
             {hasPlacemark && (
               <Placemark
                 geometry={defaultState.center}
@@ -67,6 +71,8 @@ class ExampleMap extends React.Component {
             )}
             {hasPolygon && (
               <Polygon
+                onClick={() => alert('Polygon onClick')}
+                onBalloonClose={() => alert('Polygon onBallonClose')}
                 geometry={polygonGeometry}
                 properties={polygonProperties}
                 instanceRef={polygonRef}
