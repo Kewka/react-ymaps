@@ -13,13 +13,9 @@ type Props = {
    * Placemark options.
    */
   options?: ymaps.IPlacemarkOptions;
-  /**
-   * The function for provide access to the Placemark instance.
-   */
-  instanceRef?: (placemark: ymaps.Placemark) => any;
 };
 
-const Placemark = BaseGeoObject<Props>(
+const Placemark = BaseGeoObject<Props, ymaps.Placemark>(
   (ymaps, { geometry, properties, options }) =>
     new ymaps.Placemark(geometry, properties!, options),
   'Placemark',

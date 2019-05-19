@@ -18,7 +18,7 @@ describe('Polygon', () => {
       instanceRef: (polygon) => {
         expect(polygon).toBeTruthy();
         expect(
-          (polygon.geometry as ymaps.IPolygonGeometry).contains(POLYGON_POINT),
+          (polygon!.geometry as ymaps.IPolygonGeometry).contains(POLYGON_POINT),
         ).toBeTruthy();
         done();
       },

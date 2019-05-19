@@ -1,0 +1,33 @@
+/**
+ * See: https://tech.yandex.com/maps/doc/jsapi/2.1/ref/reference/GeoObject-docpage/#GeoObject__events-summary
+ */
+export default {
+  onBalloonClose: 'balloonclose',
+  onBalloonOpen: 'balloonopen',
+  onBeforeDrag: 'beforedrag',
+  onBeforeDragStart: 'beforedragstart',
+  onClick: 'click',
+  onContextMenu: 'contextmenu',
+  onDoubleClick: 'dblclick',
+  onDrag: 'drag',
+  onDragEnd: 'dragend',
+  onDragStart: 'dragstart',
+  onEditorStateChange: 'editorstatechange',
+  onGeometryChange: 'geometrychange',
+  onHintClose: 'hintclose',
+  onHintOpen: 'hintopen',
+  onMapChange: 'mapchange',
+  onMouseDown: 'mousedown',
+  onMouseEnter: 'mouseenter',
+  onMouseLeave: 'mouseleave',
+  onMouseMove: 'mousemove',
+  onMouseUp: 'mouseup',
+  onMultiTouchEnd: 'multitouchend',
+  onMultiTouchMove: 'multitouchmove',
+  onMultiTouchStart: 'multitouchstart',
+  onOptionsChange: 'optionschange',
+  onOverlayChange: 'overlaychange',
+  onParentChange: 'parentchange',
+  onPropertiesChange: 'propertieschange',
+  onWheel: 'wheel',
+};
