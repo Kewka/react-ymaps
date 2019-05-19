@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import Ymaps from '../../typings/Ymaps';
+import Ymaps from '../../types/Ymaps';
 
 const YmapsContext = createContext<Ymaps | null>(null);
 

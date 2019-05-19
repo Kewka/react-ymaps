@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { YmapsProvider } from 'react-ymaps';
-import Home from './Home';
+import Home from './components/Home/Home';
 
-export default class App extends Component {
-  onLoad = ymaps => {
-    console.log({ ymaps });
-  };
+const onLoad = ymaps => console.log('[App] Ymaps onLoad:', ymaps);
 
-  render() {
-    return (
-      <YmapsProvider onLoad={this.onLoad}>
-        <Home />
-      </YmapsProvider>
-    );
-  }
-}
+const App = () => (
+  <YmapsProvider onLoad={onLoad}>
+    <Home />
+  </YmapsProvider>
+);
+
+export default App;

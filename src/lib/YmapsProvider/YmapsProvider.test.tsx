@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import YmapsProvider, { YmapsProviderProps } from './YmapsProvider';
+import YmapsProvider from './YmapsProvider';
 
 describe('YmapsProvider', () => {
   it('to be truthy', () => {
@@ -8,7 +8,7 @@ describe('YmapsProvider', () => {
   });
 
   it('render', async () => {
-    const props: YmapsProviderProps = {
+    const props: React.ComponentProps<typeof YmapsProvider> = {
       children: 'ymaps instance is available',
     };
 
@@ -19,7 +19,7 @@ describe('YmapsProvider', () => {
   });
 
   it('call onLoad callback', async () => {
-    const props: YmapsProviderProps = {
+    const props: React.ComponentProps<typeof YmapsProvider> = {
       onLoad: jest.fn(),
     };
 
@@ -30,7 +30,7 @@ describe('YmapsProvider', () => {
   });
 
   it('call onError callback', async () => {
-    const props: YmapsProviderProps = {
+    const props: React.ComponentProps<typeof YmapsProvider> = {
       options: {
         version: '9999.99', // invalid version
         force: true,
